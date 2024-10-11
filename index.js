@@ -1,8 +1,18 @@
 // crudMedicamentos.js
 import express from 'express';
 import pool from './conf/dbConnect.js';
+import path from 'path';
 
 const app = express();
+const port = process.env.PORT || 3000;//puerto dinamico para el deploy
+
+// Configura Express para servir archivos estáticos desde la carpeta 'public'
+app.use(express.static('public'))
+
+// Ruta para servir index.html al acceder a la raíz
+app.get('/', (req, res) => {
+    res.sendFile(path.join('index.html'));
+});
 
 app.use(express.json());
 
@@ -62,7 +72,7 @@ app.delete('/medicamentos/:id', async (req, res) => {
     res.sendStatus(204);
 });
 
-const port = process.env.PORT || 3000;
+
 app.listen(port, () => {
     console.log(`Servidor corriendo en el puerto ${port}`);
 });

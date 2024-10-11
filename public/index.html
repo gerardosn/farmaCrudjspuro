@@ -4,120 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Control - Listado de Productos</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #f0f0f0;
-            padding: 10px;
-        }
-        .menu-icon, .close-icon {
-            font-size: 24px;
-            cursor: pointer;
-        }
-        .welcome-text {
-            font-weight: bold;
-        }
-        .search-input {
-            padding: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        .side-menu {
-            position: fixed;
-            left: -250px;
-            top: 0;
-            width: 250px;
-            height: 100%;
-            background-color: #333;
-            transition: 0.3s;
-        }
-        .side-menu.active {
-            left: 0;
-        }
-        .side-menu ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .side-menu ul li a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            display: block;
-        }
-        .side-menu ul li a:hover {
-            background-color: #555;
-        }
-        .medication-section, .medication-list-section {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            border: 2px solid #007bff;
-            border-radius: 10px;
-        }
-        .medication-section h2, .medication-list-section h2 {
-            text-align: center;
-            color: #007bff;
-        }
-        .medication-form {
-            display: grid;
-            gap: 10px;
-        }
-        .medication-form input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .button-group {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-        .button-group button {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: white;
-        }
-        .button-group button:hover {
-            background-color: #0056b3;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .action-button {
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            font-size: 18px;
-            margin: 0 5px;
-        }
-        .edit-icon::before {
-            content: "✏️";
-        }
-        .delete-icon::before {
-            content: "🗑️";
-        }
-    </style>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
     <div class="header">
@@ -159,6 +46,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
+                    <th>Disponibles</th>
                     <th>Fecha de vencimiento</th>
                     <th>Precio</th>
                     <th>Acciones</th>
@@ -216,15 +104,17 @@
         function populateMedicationList() {
             const medicationListBody = document.getElementById('medicationListBody');
             const sampleData = [
-                { id: 1, name: 'Paracetamol', expDate: '2024-12-31', price: 5.99 },
-                { id: 2, name: 'Ibuprofeno', expDate: '2025-06-30', price: 7.50 },
-                { id: 3, name: 'Amoxicilina', expDate: '2024-09-15', price: 12.75 }
+                { id: 1, name: 'Paracetamol',stock: 11, expDate: '2024-12-31', price: 5.99 },
+                { id: 4, name: 'otro paracetamol',stock: 22, expDate: '2025-12-31', price: 3.99 },
+                { id: 2, name: 'Ibuprofeno',stock: 33, expDate: '2025-06-30', price: 7.50 },
+                { id: 3, name: 'Amoxicilina',stock: 44, expDate: '2024-09-15', price: 12.75 }
             ];
 
             medicationListBody.innerHTML = sampleData.map(med => `
                 <tr>
                     <td>${med.id}</td>
                     <td>${med.name}</td>
+                    <td>${med.stock}</td>
                     <td>${med.expDate}</td>
                     <td>$${med.price.toFixed(2)}</td>
                     <td>

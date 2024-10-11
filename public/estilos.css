@@ -1,0 +1,122 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 1;
+    padding: 0;
+    
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+.menu-icon, .close-icon {
+    font-size: 24px;
+    cursor: pointer;
+}
+.welcome-text {
+    font-weight: bold;
+}
+.search-input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.side-menu {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    transition: 0.3s;
+}
+.side-menu.active {
+    left: 0;
+}
+.side-menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+.side-menu ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+}
+.side-menu ul li a:hover {
+    background-color: #555;
+}
+.medication-section, .medication-list-section {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+}
+.medication-section h2, .medication-list-section h2 {
+    text-align: center;
+    color: #007bff;
+}
+.medication-form {
+    display: grid;
+    gap: 10px;
+}
+.medication-form input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;    
+}
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.button-group button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+}
+.button-group button:hover {
+    background-color: #0056b3;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+}
+.action-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 5px;
+}
+.edit-icon::before {
+    content: "✏️";
+}
+.delete-icon::before {
+    content: "🗑️";
+}
+
+/* Ajusta el tamaño del texto para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 0.6em; /* Tamaño de texto para pantallas pequeñas */
+    }
+
+}
